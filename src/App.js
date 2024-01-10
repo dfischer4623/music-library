@@ -9,7 +9,7 @@ function App(){
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://itunes.apple.com/search?term=black%20sabbath'
+      const url = encodeURI(`https://itunes.apple.com/search?term=${search}`)
       const response = await fetch(url)
       const data = await response.json()
       console.log(data)
@@ -21,12 +21,17 @@ function App(){
       }
     }
 
-    fetchData()
+    if (search) fetchData()
   }, [search])
+
+  const handleSubmit = async (e, term) => {
+    e.preventDefault()
+    setSearch(term)
+  } 
 
   return (
       <div>
-          <SearchBar />
+          <SearchBar handleSubmit={handleSubmit}/>
           {message}
           <Gallery />
       </div>
