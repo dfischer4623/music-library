@@ -33,7 +33,7 @@ function App(){
       <div>
           <SearchBar handleSubmit={handleSubmit}/>
           {message}
-          <Gallery />
+          <Gallery data={data}/>
       </div>
   )
 }

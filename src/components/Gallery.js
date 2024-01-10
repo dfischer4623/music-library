@@ -1,9 +1,12 @@
 import GalleryItem from "./GalleryItem"
 
-function Gallery(){
+function Gallery({ data }){
+    const display = data.map((item, i) => {
+        return <GalleryItem key={i} item={item} />
+    })
     return (
         <div>
-            <GalleryItem />
+            {display}
         </div>
     )
 }
